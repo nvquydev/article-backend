@@ -25,7 +25,7 @@ public class BrandController {
 	@Autowired
     private BrandService BrandService;
 	
-	@PostMapping("/Brands")
+	@PostMapping("/brands")
     public ResponseEntity<BrandDTO> createBrand(@Valid @RequestBody BrandDTO BrandDTO) {
         Brand Brand = DTOEntityConverter.convertToEntity(BrandDTO, Brand.class);
         Brand createdBrand = BrandService.createBrand(Brand);
@@ -33,14 +33,14 @@ public class BrandController {
         return new ResponseEntity<>(createdBrandDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping("/Brands/{id}")
+    @GetMapping("/brands/{id}")
     public ResponseEntity<BrandDTO> getBrandById(@PathVariable Long id) {
         Brand Brand = BrandService.getBrandById(id);
         BrandDTO BrandDTO = DTOEntityConverter.convertToDTO(Brand, BrandDTO.class);
         return new ResponseEntity<>(BrandDTO, HttpStatus.OK);
     }
 
-    @PutMapping("/Brands/{id}")
+    @PutMapping("/brands/{id}")
     public ResponseEntity<BrandDTO> updateBrand(@PathVariable Long id, @Valid @RequestBody BrandDTO BrandDTO) {
         Brand BrandToUpdate = DTOEntityConverter.convertToEntity(BrandDTO, Brand.class);
         Brand updatedBrand = BrandService.updateBrand(id, BrandToUpdate);
@@ -48,7 +48,7 @@ public class BrandController {
         return new ResponseEntity<>(updatedBrandDTO, HttpStatus.OK);
     }
 
-    @DeleteMapping("/Brands/{id}")
+    @DeleteMapping("/brands/{id}")
     public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
         BrandService.deleteBrand(id);
         return ResponseEntity.noContent().build();

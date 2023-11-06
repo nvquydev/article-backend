@@ -21,7 +21,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category getCategoryById(String id) {
-        return categoryRepository.getById(id);
+    	 return categoryRepository.findById(id)
+                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + id));
     }
 
     @Override
@@ -35,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = getCategoryById(id);
 
         // Cập nhật thông tin category với dữ liệu từ updatedCategory
-        category.setCategory_name(updatedCategory.getCategory_name());
+        category.setName(updatedCategory.getName());
 
         return categoryRepository.save(category);
     }
