@@ -1,11 +1,10 @@
 package com.quynv20.articlebackend.dao.repository;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.quynv20.articlebackend.dao.entity.Category;
+import com.quynv20.articlebackend.dao.entity.Product;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category,String> {
+public interface ProductRepository extends JpaRepository<Product,Long> {
 }
