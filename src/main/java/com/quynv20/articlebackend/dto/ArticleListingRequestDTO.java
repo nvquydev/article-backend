@@ -13,6 +13,10 @@ public class ArticleListingRequestDTO extends RequestPagingFilterDTO {
     private String memberNumber;
     private boolean forceRefresh;
     private String lastChecksum;
+    private int page;
+    private String status;
+
+    private String articleType;
     private List<String> filterByStatus = new ArrayList<String>();
 
     private List<String> filterByCategories = new ArrayList<String>();

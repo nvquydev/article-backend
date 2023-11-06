@@ -13,8 +13,8 @@ import java.util.List;
 @Setter
 @Getter
 public class Brand implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long brand_id;
@@ -28,41 +28,41 @@ public class Brand implements Serializable {
     public Brand() {
     }
 
-	public Brand(String brand_name, String country, List<Product> list_product) {
-		super();
-		this.brand_name = brand_name;
-		this.country = country;
-		this.list_product = list_product;
-	}
+    public Brand(String brand_name, String country, List<Product> list_product) {
+        super();
+        this.brand_name = brand_name;
+        this.country = country;
+        this.list_product = list_product;
+    }
 
-	public Long getBrand_id() {
-		return brand_id;
-	}
+    public Long getBrand_id() {
+        return brand_id;
+    }
 
-	public void setBrand_id(Long brand_id) {
-		this.brand_id = brand_id;
-	}
+    public void setBrand_id(Long brand_id) {
+        this.brand_id = brand_id;
+    }
 
-	public String getBrand_name() {
-		return brand_name;
-	}
+    public String getBrand_name() {
+        return brand_name;
+    }
 
-	public void setBrand_name(String brand_name) {
-		this.brand_name = brand_name;
-	}
+    public void setBrand_name(String brand_name) {
+        this.brand_name = brand_name;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-	@Override
-	public String toString() {
-		return "Brand [brand_name=" + brand_name + ", country=" + country + ", list_product=" + list_product + "]";
-	}
+    @Override
+    public String toString() {
+        return "Brand [brand_name=" + brand_name + ", country=" + country + ", list_product=" + list_product + "]";
+    }
 
 
 }

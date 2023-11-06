@@ -11,7 +11,7 @@ import com.quynv20.articlebackend.dto.ArticleListingRequestDTO;
 import com.quynv20.articlebackend.dto.ArticleListingResponseDTO;
 import com.quynv20.articlebackend.exception.BaseException;
 import com.quynv20.articlebackend.exception.ResourceNotFoundException;
-import com.quynv20.articlebackend.service.RedisCacheService;
+//import com.quynv20.articlebackend.service.RedisCacheService;
 import com.quynv20.articlebackend.service.impl.ArticleServiceImpl;
 import io.micrometer.common.util.StringUtils;
 import jakarta.validation.Valid;
@@ -31,14 +31,15 @@ import java.util.stream.Collectors;
 
 
 @RestController
+//RestController@RequestMapping("/api/v1")
 @Slf4j
 public class ArticleController {
     @Autowired
     private ArticleServiceImpl articleService;
     @Autowired
     ObjectMapper objectMapper;
-    @Autowired
-    private RedisCacheService redisCacheService;
+//    @Autowired
+//    private RedisCacheService redisCacheService;
 
     @Autowired
     private AppConfig appConfig;
@@ -55,14 +56,18 @@ public class ArticleController {
 //                    HttpStatus.BAD_REQUEST);
 //        }
         try {
-            List<Article> articleList = articleService.getAllArticles();
+            List<Article> articleList = articleService.getAllArticles(requestDTO);
             articleDTOs = articleList.stream()
                     .map(this::convertToDTO)
                     .collect(Collectors.toList());
         } catch (Exception e) {
-            responseDTO.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
-            responseDTO.setMessage(ErrorCode.INTERVAL_RETRICTED_ERROR.getMessage());
-            return responseDTO;
+            if (e instanceof BaseException) {
+                throw e; // Ném exception `e` nếu nó là một loại của `BaseException`
+            } else {
+                responseDTO.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+                responseDTO.setMessage(ErrorCode.INTERVAL_RETRICTED_ERROR.getMessage());
+                return responseDTO;
+            }
         }
         String jsonData = objectMapper.writeValueAsString(articleDTOs);
         String checksum = DigestUtils.md5Hex(jsonData);

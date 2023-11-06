@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
+//@EnableSwagger2
 public class ArticleBackendApplication extends SpringBootServletInitializer {
 
 	@Override
@@ -30,23 +30,23 @@ public class ArticleBackendApplication extends SpringBootServletInitializer {
 		SpringApplication.run(ArticleBackendApplication.class, args);
 	}
 	
-	  @Bean
-	    public Docket api() {
-	        return new Docket(DocumentationType.SWAGGER_2)
-	                .select()
-	                .apis(RequestHandlerSelectors.basePackage("in.niraj.spring.springbootswagger.controller"))
-	                .paths(PathSelectors.any())
-	                .build()
-	                .apiInfo(apiInfo());
-	    }
-
-	    private ApiInfo apiInfo() {
-	        return new ApiInfo(
-	                "Online Store Api List",
-	                "Description of API",
-	                "API V1",
-	                "Terms of service",
-	                new Contact("Niraj Darji", "https://github.com/darjiniraj", "niraj.darji107@gmail.com"),
-	                "License of API", "ttps://localhost:8080", Collections.emptyList());
-	    }
+//	  @Bean
+//	    public Docket api() {
+//	        return new Docket(DocumentationType.SWAGGER_2)
+//	                .select()
+//	                .apis(RequestHandlerSelectors.basePackage("in.niraj.spring.springbootswagger.controller"))
+//	                .paths(PathSelectors.any())
+//	                .build()
+//	                .apiInfo(apiInfo());
+//	    }
+//
+//	    private ApiInfo apiInfo() {
+//	        return new ApiInfo(
+//	                "Online Store Api List",
+//	                "Description of API",
+//	                "API V1",
+//	                "Terms of service",
+//	                new Contact("Niraj Darji", "https://github.com/darjiniraj", "niraj.darji107@gmail.com"),
+//	                "License of API", "ttps://localhost:8080", Collections.emptyList());
+//	    }
 }

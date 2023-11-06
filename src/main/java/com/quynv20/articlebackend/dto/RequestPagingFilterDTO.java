@@ -14,8 +14,6 @@ public class RequestPagingFilterDTO implements Serializable {
 
     private String sortOrder; //desc/asc
 
-    private Integer limitHistory;
-
     private Integer currentPage;
 
     private Integer pageSize;

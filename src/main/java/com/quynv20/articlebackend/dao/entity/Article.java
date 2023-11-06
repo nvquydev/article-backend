@@ -36,14 +36,17 @@ public class Article {
     private String reasonSection;
 
     @Column(name = "risk_section", columnDefinition = "TEXT")
-    private String riskSection ;
+    private String riskSection;
+
+    @Column(name = "status")
+    private String status;
 
     @Column(name = "treatments_section", columnDefinition = "TEXT")
     private String treatmentsSection;
     @Column(name = "prevention_section", columnDefinition = "TEXT")
     private String preventionSection;
     @Column(name = "created_at")
-        private Date createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
     private Date updatedAt;
